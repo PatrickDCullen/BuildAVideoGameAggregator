@@ -3,7 +3,7 @@
     @forelse ($mostRatedRecentGames as $game)
         <div class="game mt-8">
         <div class="relative inline-block">
-            <a href="#">
+            <a href="{{ route('games.show', $game['slug']) }}">
             <img src="{{ Str::replaceFirst('thumb', 'cover_big', $game['cover']['url']) }}" alt="game cover" class="hover:opacity-75 transition ease-in-out duration-150">
             </a>
             @if (isset($game['rating']))
@@ -14,14 +14,14 @@
             </div>
             @endif
         </div>
-        <a href="#" class="block text-base font-semibold leading-tight hover:text-gray-400 mt-8">
+        <a href="{{ route('games.show', $game['slug']) }}" class="block text-base font-semibold leading-tight hover:text-gray-400 mt-8">
             {{ $game['name'] }}
         </a> 
         <div class="text-gray-400 mt-1">
             @foreach ($game['platforms'] as $platform)
-            @if (array_key_exists('abbreviation', $platform))
-            {{ $platform['abbreviation'] }},
-            @endif
+                @if (array_key_exists('abbreviation', $platform))
+                    {{ $platform['abbreviation'] }},
+                @endif
             @endforeach
         </div>
         </div>

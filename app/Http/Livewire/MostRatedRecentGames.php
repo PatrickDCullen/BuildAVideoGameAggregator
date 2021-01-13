@@ -21,7 +21,7 @@ class MostRatedRecentGames extends Component
         $this->mostRatedRecentGames = Cache::remember('most-rated-recent-games', 7, function () use ($before, $after) {
             return Http::withHeaders(config('services.igdb'))
                 ->withBody(
-                    "fields name, cover.url, first_release_date, total_rating_count, platforms.abbreviation, rating;
+                    "fields name, cover.url, first_release_date, total_rating_count, platforms.abbreviation, rating, slug;
                     where total_rating_count > 1
                     & platforms = (48, 49, 130, 6)
                     & (first_release_date >= {$before}
