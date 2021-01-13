@@ -2,7 +2,11 @@ module.exports = {
     purge: [],
     darkMode: false, // or 'media' or 'class'
     theme: {
-        extend: {},
+        extend: {
+            spacing: {
+                44: "11rem",
+            },
+        },
         spinner: (theme) => ({
             default: {
                 color: "#dae1e7", // color you want to make the spinner
