@@ -16,7 +16,8 @@
         "laravel-mix": "^6.0.9",
         "lodash": "^4.17.19",
         "postcss": "^8.2.4",
-        "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.2"
+        "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.2",
+        "tailwindcss-spinner": "^1.2.0"
     },
     "dependencies": {}
 }
