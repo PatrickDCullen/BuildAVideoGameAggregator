@@ -33,11 +33,18 @@ class MostRatedRecentGames extends Component
                 ->json();
         });
 
-        dump($mostRatedRecentGamesUnformatted);
-
+        // dump($mostRatedRecentGamesUnformatted);
         // dd($this->formatForView($mostRatedRecentGamesUnformatted));
-
         $this->mostRatedRecentGames = $this->formatForView($mostRatedRecentGamesUnformatted);
+        
+        collect($this->mostRatedRecentGames)->filter(function ($game) {
+            return $game['rating'];
+        })->each(function ($game) {
+            $this->emit('gameWithRatingAdded', [
+                'slug' => $game['slug'],
+                'rating' => $game['rating'] / 100
+            ]);
+        });
         
     }
 
@@ -51,7 +58,7 @@ class MostRatedRecentGames extends Component
         return collect($games)->map(function ($game) {
             return collect($game)->merge([
                 'coverImageUrl' => Str::replaceFirst('thumb', 'cover_big', $game['cover']['url']),
-                'rating' => isset($game['rating']) ? round($game['rating']).'%' : null,
+                'rating' => isset($game['rating']) ? round($game['rating']) : null,
                 'platforms' => collect($game['platforms'])->pluck('abbreviation')->implode(', '),
             ]);
         })->toArray();
