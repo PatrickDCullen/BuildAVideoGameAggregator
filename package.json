@@ -20,6 +20,7 @@
         "tailwindcss-spinner": "^1.2.0"
     },
     "dependencies": {
-        "progressbar.js": "^1.1.0"
+        "progressbar.js": "^1.1.0",
+        "postcss": "^8.2.4"
     }
 }
