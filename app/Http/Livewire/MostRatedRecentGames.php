@@ -33,6 +33,8 @@ class MostRatedRecentGames extends Component
                 ->json();
         });
 
+        dump($mostRatedRecentGamesUnformatted);
+
         // dd($this->formatForView($mostRatedRecentGamesUnformatted));
 
         $this->mostRatedRecentGames = $this->formatForView($mostRatedRecentGamesUnformatted);
